@@ -13,7 +13,7 @@
 <p> ◻️	Andressa Hensel Cardoso 
   <br> ◻️	Roberta Hoffmeister
   <br> ◻️	Eduardo Jaskowiak Fronza  
-  <br> ◻️	João Pedro Grahl Trein </p>
+  <br> ◻️	João Pedro Grahl Trein 
   <br> ◻️	Gustavo Szulczewski Prola</p>
 
 <p> 📚 Cursando Ensino Médio Técnico em Tecnologia da Internet - Senac </p>
