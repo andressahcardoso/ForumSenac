@@ -1,15 +1,71 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import {HomeContainer, Header, Nav, Main, PersonImg, TextArea, InputTexts, Input, InputTextsImg, Title, ButtonsDiv, OutButton, SaveButton, pText, NameText, AreaLogo, InputStyled, AreaImageUser} from './styled'
+
+import { GrEdit } from "react-icons/gr";
+import {BsEyeSlashFill} from 'react-icons/bs'
+import {BiImageAdd} from 'react-icons/bi'
+
+import LogoSenac from '../../assets/logoSenac.png'
+
 
 function Home(props) {
     const location = useLocation();
     const user = location.state;
 
   return (
-    <div>
-      <h1>Welcome, {user?.name || 'Guest'}</h1>
-      <img src={user?.picture}></img>
-    </div>
+    <HomeContainer>
+      <Header>
+        <AreaLogo src={LogoSenac} alt='Logo senac' />
+              <InputStyled type='search' placeholder='Pesquisar...' />
+              <AreaImageUser
+                  src={user?.picture}
+                  alt='Imagem do usuário' />
+      </Header>
+      <Nav></Nav>
+      <Main>
+        <div>
+          <PersonImg src={user?.picture}></PersonImg>
+          <NameText>{user?.name || 'Guest'}</NameText>
+        </div>
+
+
+        <TextArea>
+          <Title>Informações</Title>
+
+          <InputTexts>
+            <pText>Nome do usuário</pText>
+            <Input placeholder={user?.name || 'Guest'}></Input>
+            <GrEdit/>
+          </InputTexts>
+
+          <InputTexts>
+            <pText>Email</pText>
+            <Input placeholder={user?.email || 'Guest'}></Input>
+            <GrEdit/>
+          </InputTexts>
+
+          <InputTexts>
+            <pText>Senha</pText>
+            <Input placeholder='*************'></Input>
+            <BsEyeSlashFill/>
+          </InputTexts>
+
+          <InputTextsImg>
+            <pText>Alterar Imagem</pText>
+            <Input placeholder={user?.picture || 'Guest'}></Input>
+            <BiImageAdd/>
+          </InputTextsImg>
+
+          <ButtonsDiv>
+            <OutButton>SAIR</OutButton>
+            <SaveButton>SALVAR</SaveButton>
+          </ButtonsDiv>
+
+        </TextArea>
+      </Main>
+     
+    </HomeContainer>
   );
 };
 
