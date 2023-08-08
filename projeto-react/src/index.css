@@ -1,13 +1,32 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: content-box;
+  font-family: var(--fonte-montserrat);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --laranja: #F79535;
+  --azul-claro: #336CFF;
+  --branco: #FFFFFF;
+  --preto: #000000;
+
+  --fonte-titulo:40px;
+  --fonte-subtitulo:30;
+  --fonte-texto:20;
+
+  --fonte-largura-normal:300;
+  --fonte-largura-padrao:400;
+  --fonte-largura-medio:500;
+  --fonte-largura-seminegrito:600;
+  --fonte-largura-negrito:700;
+  --fonte-largura-extranegrito:800;
+  --fonte-largura-ultranegrito:900;
+
+  --fonte-montserrat:'Montserrat', sans-serif;
+  --fonte-inter:'MuseoModerno', cursive;
+  
+  /* h1, h2, h3, h4, h5, h6, p, span {
+    margin: 0;
+  } */
 }

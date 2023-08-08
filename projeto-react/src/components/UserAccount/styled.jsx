@@ -109,7 +109,15 @@ export const AreaImageUser = styled.img`
 
 export const Nav = styled.div`
     grid-area: Nav;
-    background-color: #c9c9c9;
+    
+
+    border-right: 5px solid var(--azul-claro);
+    background-color: var(--branco);
+    z-index: 0;
+
+    @media (width < 768px ) {
+        grid-column: 2 / 3;
+    }
 `
 
 export const Main = styled.div`
@@ -172,7 +180,7 @@ export const NameText = styled.p`
 
 export const ButtonsDiv = styled.div`
     width: 38vw;
-    margin-top: 9vh;
+    margin-top: 4vh;
     display: flex;
     align-items: end;
     justify-content: end;
@@ -185,6 +193,7 @@ export const OutButton = styled.button`
     padding: 8px 30px 8px 30px;
     color: white;
     margin-right: 1vw;
+    cursor: pointer;
 `
 
 export const SaveButton = styled.button`
@@ -193,4 +202,5 @@ export const SaveButton = styled.button`
     border-radius: 5px;
     padding: 8px 30px 8px 30px;
     color: white;
+    cursor: pointer;
 `

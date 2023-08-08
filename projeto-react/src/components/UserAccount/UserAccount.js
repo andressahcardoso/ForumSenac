@@ -7,6 +7,7 @@ import {BsEyeSlashFill} from 'react-icons/bs'
 import {BiImageAdd} from 'react-icons/bi'
 
 import LogoSenac from '../../assets/logoSenac.png'
+import { Sidebar } from '../SideBar/SideBar';
 
 
 function Home(props) {
@@ -17,12 +18,14 @@ function Home(props) {
     <HomeContainer>
       <Header>
         <AreaLogo src={LogoSenac} alt='Logo senac' />
-              <InputStyled type='search' placeholder='Pesquisar...' />
+            
               <AreaImageUser
                   src={user?.picture}
                   alt='Imagem do usuário' />
       </Header>
-      <Nav></Nav>
+      <Nav>
+        <Sidebar></Sidebar>
+      </Nav>
       <Main>
         <div>
           <PersonImg src={user?.picture}></PersonImg>
