@@ -17,7 +17,7 @@ function Register() {
         console.log(userObject);
         setUser(userObject);
         document.getElementById("signInDiv").hidden = true;
-        navigate('/UserAccount', { state: userObject });
+        navigate('/Home', { state: userObject });
     }
 
     function handleSignOut(event){

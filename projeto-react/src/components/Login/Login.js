@@ -17,7 +17,7 @@ function Login() {
         console.log(userObject);
         setUser(userObject);
         document.getElementById("signInDiv").hidden = true;
-        navigate('/UserAccount', { state: userObject });
+        navigate('/Home', { state: userObject });
     }
 
     function handleSignOut(event){
@@ -48,7 +48,7 @@ function Login() {
             <Logo src={LogoSenac}/>
             <Input placeholder="Nome de usuário"/>
             <Input placeholder="Senha"/>
-           <Button type="submit">Enviar</Button>
+           <Link to={'/Home'}><Button type="submit">Enviar</Button></Link>
 
 
             <TextSection>

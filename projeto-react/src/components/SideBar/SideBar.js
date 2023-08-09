@@ -1,4 +1,4 @@
-import { ContainerSidebar, SidebarNavigationContainer, SidebarNavList, SidebarNavItem, LinkText } from './styled';
+import { SidebarNavigationContainer, SidebarNavList, SidebarNavItem, LinkText } from './styled';
 import { RiHome2Line } from 'react-icons/ri';
 import { HiOutlineLightBulb } from 'react-icons/hi';
 import { RiQuestionnaireLine } from 'react-icons/ri';
@@ -9,22 +9,22 @@ const ItemsMenu = [
     {
         title: 'Home',
         icon: <RiHome2Line />,
-        link: '/'
+        link: '/Home'
     },
     {
         title: 'Tópicos',
         icon: <HiOutlineLightBulb />,
-        link: '/Tópicos'
+        link: '/Topics'
     },
     {
         title: 'Meus Tópicos',
         icon: <RiQuestionnaireLine />,
-        link: '/MeusTópicos'
+        link: '/MyTopics'
     },
     {
         title: 'Minhas respostas',
         icon: <BiCommentDetail />,
-        link: '/MinhasRespostas'
+        link: '/MyAnswers'
     },
 
 ]

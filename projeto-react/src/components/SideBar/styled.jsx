@@ -27,6 +27,7 @@ export const SidebarNavItem = styled.li`
     padding-left: 1vw;
     display: flex;
     align-items: center;
+    height: 5vh;
 
     a {
         text-decoration: none;
@@ -36,7 +37,7 @@ export const SidebarNavItem = styled.li`
     &:hover, &:active {
         background-color: var(--azul-claro);
         width: 16vw;
-        height: 8vh;
+        height: 7vh;
         border-radius: 0px 10px 10px 0px;
 
         display:flex;

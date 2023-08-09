@@ -1,13 +1,15 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import {HomeContainer, Header, Nav, Main, PersonImg, TextArea, InputTexts, Input, InputTextsImg, Title, ButtonsDiv, OutButton, SaveButton, pText, NameText, AreaLogo, InputStyled, AreaImageUser} from './styled'
+import {HomeContainer, Header, Nav, Main, PersonImg, TextArea, InputTexts, Input, InputTextsImg, Title, ButtonsDiv, OutButton, SaveButton, NameText } from './styled'
 
 import { GrEdit } from "react-icons/gr";
 import {BsEyeSlashFill} from 'react-icons/bs'
 import {BiImageAdd} from 'react-icons/bi'
 
-import LogoSenac from '../../assets/logoSenac.png'
 import { Sidebar } from '../SideBar/SideBar';
+import HeaderComponent from '../Header/Header';
+
+import UserImgTest from '../../assets/loginImg.jpg'
 
 
 function Home(props) {
@@ -17,18 +19,14 @@ function Home(props) {
   return (
     <HomeContainer>
       <Header>
-        <AreaLogo src={LogoSenac} alt='Logo senac' />
-            
-              <AreaImageUser
-                  src={user?.picture}
-                  alt='Imagem do usuário' />
+        <HeaderComponent/>
       </Header>
       <Nav>
-        <Sidebar></Sidebar>
+        <Sidebar/>
       </Nav>
       <Main>
         <div>
-          <PersonImg src={user?.picture}></PersonImg>
+          <PersonImg src={UserImgTest}></PersonImg>
           <NameText>{user?.name || 'Guest'}</NameText>
         </div>
 
