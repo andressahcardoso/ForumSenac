@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {HomeContainer, Header, Nav, Main, PersonImg, TextArea, InputTexts, Input, InputTextsImg, Title, ButtonsDiv, OutButton, SaveButton, NameText } from './styled'
 
 import { GrEdit } from "react-icons/gr";
@@ -59,7 +59,7 @@ function Home(props) {
           </InputTextsImg>
 
           <ButtonsDiv>
-            <OutButton>SAIR</OutButton>
+            <Link to={'/Home'}><OutButton>SAIR</OutButton></Link>
             <SaveButton>SALVAR</SaveButton>
           </ButtonsDiv>
 

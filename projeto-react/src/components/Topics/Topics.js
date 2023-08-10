@@ -1,9 +1,10 @@
 import React from 'react';
 // import { useLocation } from 'react-router-dom';
-import {HomeContainer, Header, Nav, Main} from './styled'
+import {HomeContainer, Header, Nav, Main, TopicNav} from './styled'
 
 import { Sidebar } from '../SideBar/SideBar';
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
+import { TopicsList } from '../TopicsList/TopicsList';
 
 
 function Topics() {
@@ -21,6 +22,9 @@ function Topics() {
       <Main>
         Tópicos
       </Main>
+      <TopicNav>
+          <TopicsList/>
+      </TopicNav>
      
     </HomeContainer>
   );

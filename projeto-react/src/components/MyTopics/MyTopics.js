@@ -4,6 +4,8 @@ import {HomeContainer, Header, Nav, Main} from './styled'
 
 import { Sidebar } from '../SideBar/SideBar';
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
+import { TopicsList } from '../TopicsList/TopicsList';
+import { TopicNav } from '../Home/styled';
 
 
 function MyTopics() {
@@ -21,6 +23,9 @@ function MyTopics() {
       <Main>
         Meus Tópicos
       </Main>
+      <TopicNav>
+          <TopicsList/>
+      </TopicNav>
      
     </HomeContainer>
   );

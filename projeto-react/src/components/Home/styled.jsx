@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const HomeContainer = styled.div`
     display: grid;
-    grid-template-columns: 16vw 84vw;
+    grid-template-columns: 16vw 71vw 13vw;
     grid-template-rows: 10vh 45vh 45vh;
-    grid-template-areas: 'Header Header'
-                            'Nav Main'
-                            'Nav Main';
+    grid-template-areas: 'Header Header Header'
+                            'Nav Main TopicNav'
+                            'Nav Main TopicNav';
 `
 
 export const Header = styled.div`
@@ -49,6 +49,10 @@ export const Main = styled.div`
     grid-area: Main;
     display: flex;
     justify-content: center;
-    padding-top: 10vh;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -4vh;
+`
 
+export const TopicNav = styled.div`
 `
