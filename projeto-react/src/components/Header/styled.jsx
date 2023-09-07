@@ -33,3 +33,23 @@ export const AreaImageUser = styled.img`
         left: 9rem;
     }
 `;
+
+
+export const DivLogOut = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 10vw;
+`
+export const BtnLogOut = styled.button`
+    height: 4vh;
+    border: 1px solid #d5700b;
+    background-color: white;
+    color: #F79535;
+    border-radius: 20px;
+    width: 4vw;
+    height: 4vh;
+    cursor: pointer;
+`

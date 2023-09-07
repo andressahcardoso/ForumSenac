@@ -1,15 +1,53 @@
 import { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
 
-import {LoginContainer, LoginImg, SignInDiv, Logo, Input, Button, Line, Text, SubText, TextDiv, TextSection} from "./styled"
+import {LoginContainer, LoginImg, SignInDiv, Logo, Input, Button, Line, Text, SubText, TextDiv, TextSection, Form} from "./styled"
 import LogoSenac from '../../assets/logoSenac.png'
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Login() {
 
-    const [user, setUser] = useState({});
+    // Validação de Login API
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
     const navigate = useNavigate();
+
+    const saveUserInfoLocalStorage = (token) => {
+        localStorage.setItem('email', email)
+        localStorage.setItem('token', token)
+    }
+
+    console.log(email)
+    console.log(password)
+
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+
+        const credentials = {email, password}
+
+        axios.post('http://localhost:8000/login', credentials, {
+            headers:{
+                'Content-Type': 'application/json', 
+            },
+        })
+        .then(response =>{
+            alert(response.data.message)
+            saveUserInfoLocalStorage(response.data.token)
+            navigate('Home')
+        })
+        .catch(error => console.log(error))
+
+    }
+
+
+
+    // Validação de Login Google
+
+    const [user, setUser] = useState({});
 
     function handleCallbackResponse(response){
         console.log("Encoded JWT ID token: " + response.credential);
@@ -17,7 +55,7 @@ function Login() {
         console.log(userObject);
         setUser(userObject);
         document.getElementById("signInDiv").hidden = true;
-        navigate('/Home', { state: userObject });
+        navigate('Home')
     }
 
     function handleSignOut(event){
@@ -46,10 +84,13 @@ function Login() {
         <LoginImg/>
         <SignInDiv>
             <Logo src={LogoSenac}/>
-            <Input placeholder="Nome de usuário"/>
-            <Input placeholder="Senha"/>
-           <Link to={'/Home'}><Button type="submit">Enviar</Button></Link>
-
+            <Form onSubmit={handleSubmit}>
+            <Input placeholder="E-mail" value={email}
+                        onChange={(e) => setEmail(e.target.value)}/>
+            <Input placeholder="Senha" value={password}
+                        onChange={(e) => setPassword(e.target.value)}/>
+           <Button type="submit" value="Entrar">Enviar</Button>
+           </Form>
 
             <TextSection>
                 <TextDiv>
