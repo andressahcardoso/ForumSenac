@@ -69,5 +69,13 @@ export const TextDiv = styled.div`
 
 export const TextSection = styled.section`
     margin-top: -6vh;
-    
+`
+
+export const Form = styled.form`
+    height: 30vh;
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 `
