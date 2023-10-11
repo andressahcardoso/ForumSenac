@@ -36,12 +36,14 @@ export const Sidebar = () => {
                 <SidebarNavList>
                     {ItemsMenu.map((item, index) => {
                         return (
-                            <SidebarNavItem key={index}>
-                                {item.icon}
-                                <LinkText><Link to={item.link}>
-                                    {item.title}
-                                </Link></LinkText>
-                            </SidebarNavItem>
+                            <Link to={item.link}>
+                                <SidebarNavItem key={index}>
+                                    {item.icon}
+                                    <LinkText>
+                                        {item.title}
+                                    </LinkText>
+                                </SidebarNavItem>
+                            </Link>
                         )
                     })}
                 </SidebarNavList>
