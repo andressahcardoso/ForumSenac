@@ -4,13 +4,12 @@ export const LinkText = styled.div`
     margin-left: 2vh;
 `
 
-// export const ContainerSidebar = styled.section`
-//     height: 100%;
-//     margin:1rem 0;
-// `
 export const SidebarNavigationContainer = styled.nav`
     margin: 0;
     padding: 0;
+    a {
+        text-decoration: none;
+    }
 `
 
 export const SidebarNavList = styled.ul`
@@ -20,6 +19,7 @@ export const SidebarNavList = styled.ul`
     font-size: 18px;
     padding-top: 5vh;
     z-index: 2;    
+    
 `;
 export const SidebarNavItem = styled.li`
     padding: 0.5rem;
@@ -28,11 +28,8 @@ export const SidebarNavItem = styled.li`
     display: flex;
     align-items: center;
     height: 5vh;
-
-    a {
-        text-decoration: none;
-        color:var(--preto);
-    }
+    text-decoration: none;
+    color:var(--preto);
     
     &:hover, &:active {
         background-color: var(--azul-claro);
