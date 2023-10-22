@@ -1,79 +1,81 @@
-import { useEffect, useState } from 'react';
-import jwtDecode from 'jwt-decode';
-
-import {LoginContainer, LoginImg, SignInDiv, Logo, Input, Button, Line, Text, SubText, TextDiv, TextSection} from "./styled"
-import LogoSenac from '../../assets/logoSenac.png'
+import React, { useState } from 'react';
+import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
+import {
+  LoginContainer,
+  LoginImg,
+  SignInDiv,
+  Logo,
+  Input,
+  Button,
+  Line,
+  Text,
+  SubText,
+  TextDiv,
+  TextSection,
+} from './styled';
+
+import LogoSenac from '../../assets/logoSenac.png';
 
 function Register() {
+  const [userData, setUserData] = useState({
+    nome: '',
+    email: '',
+    senha: '',
+  });
+  const navigate = useNavigate();
 
-    const [user, setUser] = useState({});
-    const navigate = useNavigate();
-
-    function handleCallbackResponse(response){
-        console.log("Encoded JWT ID token: " + response.credential);
-        var userObject = jwtDecode(response.credential);
-        console.log(userObject);
-        setUser(userObject);
-        document.getElementById("signInDiv").hidden = true;
-        navigate('/Home', { state: userObject });
+  const handleRegister = async () => {
+    try {
+      const response = await axios.post('http://localhost:3008/api/user/create', userData);
+      // Verifique se o registro foi bem-sucedido
+      if (response.data.success) {
+        // Redirecione o usuário para a página de login ou para onde desejar
+        console.log(response)
+        navigate('/');
+      } else {
+        // Lidar com erros de registro
+        console.error('Erro no registro:', response.data.message);
+      }
+    } catch (error) {
+      console.error('Erro ao registrar o usuário:', error);
     }
+  };
 
-    function handleSignOut(event){
-        setUser({});
-        document.getElementById("signInDiv").hidden = false;
-    }
+  return (
+    <LoginContainer>
+      <LoginImg />
+      <SignInDiv>
+        <Logo src={LogoSenac} />
+        <Input
+          placeholder="Nome de usuário"
+          onChange={(e) => setUserData({ ...userData, nome: e.target.value })}
+        />
+        <Input
+          placeholder="E-mail"
+          onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+        />
+        <Input
+          placeholder="Senha"
+          type="password"
+          onChange={(e) => setUserData({ ...userData, senha: e.target.value })}
+        />
+        <Button type="button" onClick={handleRegister}>
+          Cadastre-se
+        </Button>
 
-    useEffect(() => {
-        /* global google */
+        <TextSection>
+          <TextDiv>
+            <Text>Já possui conta?</Text>
+            <Link to="/">Entre aqui</Link>
+          </TextDiv>
+        </TextSection>
 
-        google.accounts.id.initialize({
-        client_id: "283394545884-s4aqguk91fpectug2di69sngp4af40v8.apps.googleusercontent.com",
-        callback: handleCallbackResponse
-        })
+        <Line />
+      </SignInDiv>
+    </LoginContainer>
+  );
+}
 
-        google.accounts.id.renderButton(
-        document.getElementById("signInDiv"),
-        {theme: "outline", size: "large"}
-        )
-
-        google.accounts.id.prompt();
-    }, []);
-
-    return (
-      <LoginContainer>
-        <LoginImg/>
-        <SignInDiv>
-            <Logo src={LogoSenac}/>
-            <Input placeholder="Nome de usuário"/>
-            <Input placeholder="E-mail"/>
-            <Input placeholder="Senha"/>
-            <Link to='/Home'><Button type="submit">Cadastre-se</Button></Link>
-
-
-            <TextSection>
-                <TextDiv>
-                    <Text>Já possui conta?</Text>
-                    <Link to='/'><SubText>Entre aqui</SubText></Link>
-                </TextDiv>
-            </TextSection>
-
-            <Line></Line>
-
-
-            <div id="signInDiv"></div>
-            { Object.keys(user).length !== 0 && 
-                <>
-                    <button onClick={(e) => handleSignOut(e)}>Sign Out</button>
-                </>
-            }
-           
-        </SignInDiv>
-        
-      </LoginContainer>
-    );
-  }
-  
-  export default Register;
-  
+export default Register;
