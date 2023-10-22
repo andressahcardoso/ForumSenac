@@ -43,6 +43,7 @@ export const Button = styled.button`
     background-color: #336CFF;
     border: 1px solid #336CFF;
     border-radius: 10px;
+    cursor: pointer;
 `
 
 export const Line = styled.div`
@@ -78,4 +79,9 @@ export const Form = styled.form`
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+`
+
+export const ErrorMsg = styled.p`
+    padding: 20px;
+    background-color: red;
 `
