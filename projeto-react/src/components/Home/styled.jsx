@@ -34,7 +34,7 @@ export const Header = styled.div`
 
 export const Nav = styled.div`
     grid-area: Nav;
-    
+
 
     border-right: 5px solid var(--azul-claro);
     background-color: var(--branco);
@@ -52,7 +52,10 @@ export const Main = styled.div`
     align-items: center;
     flex-direction: column;
     margin-top: -4vh;
+   
+   
 `
 
 export const TopicNav = styled.div`
+
 `

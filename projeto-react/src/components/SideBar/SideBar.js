@@ -12,14 +12,9 @@ const ItemsMenu = [
         link: '/Home'
     },
     {
-        title: 'Tópicos',
-        icon: <HiOutlineLightBulb />,
-        link: '/Topics'
-    },
-    {
-        title: 'Meus Tópicos',
+        title: 'Criar post',
         icon: <RiQuestionnaireLine />,
-        link: '/MyTopics'
+        link: '/createPost'
     },
     {
         title: 'Minhas respostas',

@@ -28,7 +28,7 @@ function Register() {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/user/create', userData);
+      const response = await axios.post('http://localhost:3008/api/user/create', userData);
       // Verifique se o registro foi bem-sucedido
       if (response.data.success) {
         // Redirecione o usuário para a página de login ou para onde desejar

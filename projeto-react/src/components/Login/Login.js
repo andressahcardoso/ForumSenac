@@ -28,7 +28,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/login', {
+      const response = await axios.post('http://localhost:3008/api/auth/login', {
         email,
         senha: password, // 'senha' deve corresponder ao nome do campo no backend
       });
@@ -36,7 +36,14 @@ function Login() {
       if (response.data.success) {
         // Armazena o token no localStorage
         const token = response.data.data[0].token;
+        const userId = response.data.data[0].id;
+
         localStorage.setItem('token', token);
+        localStorage.setItem('userId', userId);
+
+
+
+      
 
         // Define o token no cabeçalho das solicitações Axios
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
