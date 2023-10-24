@@ -48,8 +48,8 @@ export const Nav = styled.div`
 export const Main = styled.div`
     grid-area: Main;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding-top: 10vh;
 
 `
-

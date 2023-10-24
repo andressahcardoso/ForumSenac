@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   HomeContainer,
   Header,
@@ -18,7 +18,7 @@ import {
 } from "./styled";
 
 import { GrEdit } from "react-icons/gr";
-import { BsEyeSlashFill, BsFillEmojiNeutralFill } from "react-icons/bs";
+import { BsEyeSlashFill } from "react-icons/bs";
 import { BiImageAdd } from "react-icons/bi";
 
 import { Sidebar } from "../SideBar/SideBar";
@@ -30,10 +30,12 @@ function Home(props) {
   const location = useLocation();
   const user = location.state;
   const IdUser = localStorage.getItem("userId");
+  const name = localStorage.getItem("name");
+  const  email = localStorage.getItem("email");
 
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [newName, setNewName] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [newEmail, setNewEmail] = useState("");
 
   const navigate = useNavigate()
 
@@ -42,9 +44,9 @@ function Home(props) {
 
     try {
       const response = axios.put(`http://localhost:3008/api/user/${IdUser}`, {
-        nome: name,
-        senha: password,
-        email: email,
+        nome: newName,
+        senha: newPassword,
+        email: newEmail,
       });
     } catch (error) {}
   };
@@ -60,7 +62,7 @@ function Home(props) {
       <Main>
         <div>
           <PersonImg src={UserImgTest}></PersonImg>
-          <NameText>{user?.name || "Guest"}</NameText>
+          <NameText>{name || "Guest"}</NameText>
         </div>
 
         <form onSubmit={handleSubmmit}>
@@ -70,9 +72,9 @@ function Home(props) {
             <InputTexts>
               <pText>Nome do usuário</pText>
               <Input
-                placeholder={user?.name || "Guest"}
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                placeholder={name || "Guest"}
+                value={newName}
+                onChange={(e) => setNewName(e.target.value)}
               ></Input>
 
               <GrEdit />
@@ -81,9 +83,9 @@ function Home(props) {
             <InputTexts>
               <pText>Email</pText>
               <Input
-                placeholder={user?.email || "Guest"}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                placeholder={email || "Guest"}
+                value={newEmail}
+                onChange={(e) => setNewEmail(e.target.value)}
               ></Input>
               <GrEdit />
             </InputTexts>
@@ -93,8 +95,8 @@ function Home(props) {
               <Input
                 placeholder="Insira sua nova senha"
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
               ></Input>
               <BsEyeSlashFill />
             </InputTexts>

@@ -2,10 +2,10 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import HeaderComponent from "../Header/Header";
 import { Sidebar } from "../SideBar/SideBar";
-import { Header, HomeContainer, Main, Nav } from "../UserAccount/styled";
 import axios from "axios";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { Header, HomeContainer, Main, Nav } from "./styled";
 
 function Answer() {
   const [post, setPost] = useState(null);
@@ -21,8 +21,8 @@ function Answer() {
     });
   }
 
-  // Função para adicionar novo comentari
-  const handleSubmmit = useCallback(async (e) => { // Wrap it with useCallback
+  // Função para adicionar novo comentario
+  const handleSubmmit = useCallback(async (e) => {
     e.preventDefault();
     const userId = localStorage.getItem("userId");
     const postID = post.post_id;
@@ -108,7 +108,9 @@ function Answer() {
               <textarea
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
-              ></textarea>
+              >
+              </textarea>
+
               <button type="submit" style={{ margin: "20px 0" }}>
                 Adicionar comentário
               </button>

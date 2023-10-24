@@ -37,13 +37,13 @@ function Login() {
         // Armazena o token no localStorage
         const token = response.data.data[0].token;
         const userId = response.data.data[0].id;
-
+        const email = response.data.data[0].email;
+        const name = response.data.data[0].nome;
+   
         localStorage.setItem('token', token);
         localStorage.setItem('userId', userId);
-
-
-
-      
+        localStorage.setItem('email', email);
+        localStorage.setItem('name', name);
 
         // Define o token no cabeçalho das solicitações Axios
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;

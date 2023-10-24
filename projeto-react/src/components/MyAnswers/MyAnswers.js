@@ -8,9 +8,6 @@ import HeaderSearch from '../HeaderSearch/HeaderSearch';
 
 
 function MyAnswers() {
-    // const location = useLocation();
-    // const user = location.state;
-
   return (
     <HomeContainer>
       <Header>

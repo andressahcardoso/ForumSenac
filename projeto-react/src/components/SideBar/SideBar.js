@@ -21,6 +21,11 @@ const ItemsMenu = [
         icon: <BiCommentDetail />,
         link: '/MyAnswers'
     },
+    {
+        title: 'Minhas perguntas',
+        icon: <BiCommentDetail />,
+        link: '/MyQuestions'
+    },
 
 ]
 

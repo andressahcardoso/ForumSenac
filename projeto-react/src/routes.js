@@ -7,6 +7,8 @@ import CreatePost from './components/CreatePost/CreatePost';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MyAnswers from './components/MyAnswers/MyAnswers';
 import Answer from './components/Answer/Answer';
+import MyQuestions from './components/MyQuestions/Myquestions';
+import { Question } from './components/Question/Question';
 
 
 
@@ -22,8 +24,9 @@ function AppRoutes() {
       <Route path="/Home" Component={Home}/>
       <Route path="/CreatePost" Component={CreatePost}/>
       <Route path="/Answer/:id" Component={Answer}/>
-
       <Route path="/MyAnswers" Component={MyAnswers}/>
+      <Route path="/MyQuestions" Component={MyQuestions}/>
+      <Route path="/Question/:id" Component={Question}/>
     </Routes>
   </Router>
   );
