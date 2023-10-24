@@ -1,5 +1,7 @@
 const connection = require('../config/db');
 
+// ---------------- POSTS ------------------
+
 // Criar os posts
 async function createPost(req, res) {
   const { titulo, conteudo, autor_id } = req.body;
@@ -79,6 +81,62 @@ async function getPostById(req, res) {
   });
 }
 
+// Consultar todos os posts de um usuário
+async function getPostsByUser(req, res) {
+  const userId = req.params.id; // Supondo que você obtenha o ID do usuário a partir dos parâmetros da rota
+
+  const query = `
+    SELECT
+        posts.id AS post_id,
+        posts.titulo AS post_titulo,
+        posts.conteudo AS post_conteudo,
+        posts.data_criacao AS post_data_criacao,
+        usuarios.nome AS autor_nome
+    FROM
+        posts
+    JOIN
+        usuarios ON posts.autor_id = usuarios.id
+    WHERE
+        posts.autor_id = ?;
+  `;
+
+  connection.query(query, [userId], (error, results) => {
+    if (error) {
+      console.error('Erro ao recuperar os posts do usuário: ' + error.message);
+      return res.status(500).json({ error: 'Erro ao recuperar os posts do usuário' });
+    }
+
+    res.json(results);
+  });
+}
+
+// Atualizar um post (somente o autor)
+async function updatePost(req, res) {
+  const postId = req.params.id;
+  const { titulo, conteudo, autor_id } = req.body;
+
+  if (!titulo || !conteudo) {
+    return res.status(400).json({ error: 'Campos obrigatórios não preenchidos' });
+  }
+
+  const query = 'UPDATE posts SET titulo = ?, conteudo = ? WHERE id = ? AND autor_id = ?';
+  const values = [titulo, conteudo, postId, autor_id];
+
+  connection.query(query, values, (error, result) => {
+    if (error) {
+      console.error('Erro ao atualizar o post: ' + error.message);
+      return res.status(500).json({ error: 'Erro ao atualizar o post' });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(403).json({ error: 'Não autorizado a editar este post ou post não encontrado' });
+    }
+
+    res.json({ message: 'Post atualizado com sucesso' });
+  });
+}
+
+// ---------------- COMENTARIOS ------------------
 
 // Criar um comentário
 async function createComment(req, res) {
@@ -100,7 +158,6 @@ async function createComment(req, res) {
     res.json({ message: 'Comentário criado com sucesso', commentId: result.insertId });
   });
 }
-
 
 // Consultar todos os comentários para um post específico
 async function getCommentsForPost(req, res) {
@@ -134,6 +191,8 @@ module.exports = {
   createPost,
   getAllPosts,
   getPostById,
+  getPostsByUser,
   createComment,
-  getCommentsForPost
+  getCommentsForPost,
+  updatePost
 };
