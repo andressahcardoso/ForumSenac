@@ -162,6 +162,30 @@ O roteador `userRouter` é responsável por lidar com as operações relacionada
 - **Controlador:** `listUsers` no `userController`
 - **Descrição:** Retorna a lista de todos os usuários registrados no fórum.
 
+``` CODE
+http://localhost:3008/api/users
+```
+``` JSON
+{
+	"success": true,
+	"message": "Retorno de usuarios com sucesso!",
+	"data": [
+		{
+			"id": 1,
+			"nome": "Eduardo Fronza",
+			"email": "edujfronza@gmail.com",
+			"senha": "$2b$10$/EyfQUYcoXpPekl0gl7nVuGMj/rFI8jE8y/7Ye/qhRtMuu.44XMrq"
+		},
+		{
+			"id": 2,
+			"nome": "a",
+			"email": "a@gmail.com",
+			"senha": "$2b$10$ABQKHpiI5t43PWASqvZyROyoJ0hjBaaDLZ6A3bt1HSWn8hKVvZ7pu"
+		},
+	]
+}
+```
+
 ### Criar Usuário
 
 - **Método HTTP:** POST
