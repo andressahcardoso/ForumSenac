@@ -48,7 +48,7 @@ function Answer() {
     async function fetchPost() {
       try {
         const response = await axios.get(`http://localhost:3008/api/posts/${id}`);
-        const responseComments = await axios.get(`http://localhost:3008/api/getCommentsForPost/${id}`);
+        const responseComments = await axios.get(`http://localhost:3008/api/comments/post/${id}`);
 
         setPost(response.data);
         setComments(responseComments.data);

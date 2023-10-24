@@ -187,6 +187,37 @@ async function getCommentsForPost(req, res) {
   });
 }
 
+// Consultar todas as respostas de um usuário em todos os posts
+async function getCommentsByUser(req, res) {
+  const userId = req.params.userId; // ID do usuário
+
+  const query = `
+    SELECT
+        comentarios.id AS comentario_id,
+        comentarios.texto AS comentario_texto,
+        comentarios.data_criacao AS comentario_data_criacao,
+        usuarios.nome AS autor_nome,
+        posts.titulo AS post_titulo
+    FROM
+        comentarios
+    JOIN
+        usuarios ON comentarios.autor_id = usuarios.id
+    JOIN
+        posts ON comentarios.post_id = posts.id
+    WHERE
+        comentarios.autor_id = ?;
+  `;
+
+  connection.query(query, [userId], (error, results) => {
+    if (error) {
+      console.error('Erro ao recuperar os comentários do usuário: ' + error.message);
+      return res.status(500).json({ error: 'Erro ao recuperar os comentários do usuário' });
+    }
+
+    res.json(results);
+  });
+}
+
 module.exports = {
   createPost,
   getAllPosts,
@@ -194,5 +225,6 @@ module.exports = {
   getPostsByUser,
   createComment,
   getCommentsForPost,
-  updatePost
+  updatePost,
+  getCommentsByUser
 };
