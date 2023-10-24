@@ -5,7 +5,7 @@ import { Sidebar } from "../SideBar/SideBar";
 import { useParams } from "react-router";
 import axios from "axios";
 
-export const Question = () => {
+export const EditQuestion = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [comments, setComments] = useState([]);

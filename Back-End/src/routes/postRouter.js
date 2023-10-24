@@ -24,8 +24,11 @@ router.put('/posts/update/:id', updatePost);
 
 
 router.post('/createComment', createComment);
-router.get('/comments/post/:id', getCommentsForPost);
+router.get('/comments/:id', getCommentsForPost);
+router.get('/comments/post/:id', getCommentsForPost); // Criar
 router.get('/comments/:userId/responses', getCommentsByUser);
+
+router.put('/comments/update/:id', ); // Criar
 
 
 

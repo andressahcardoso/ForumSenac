@@ -7,7 +7,7 @@ import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { Header, HomeContainer, Main, Nav } from "./styled";
 
-function Answer() {
+function AnswerPost() {
   const [post, setPost] = useState(null);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
@@ -122,4 +122,4 @@ function Answer() {
   );
 }
 
-export default Answer;
+export default AnswerPost;

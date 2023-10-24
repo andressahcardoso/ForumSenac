@@ -6,9 +6,10 @@ import Home from '../src/components/Home/Home'
 import CreatePost from './components/CreatePost/CreatePost';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MyAnswers from './components/MyAnswers/MyAnswers';
-import Answer from './components/Answer/Answer';
 import MyQuestions from './components/MyQuestions/Myquestions';
-import { Question } from './components/Question/Question';
+import { EditQuestion } from './components/EditQuestion/EditQuestion';
+import AnswerPost from './components/AnswerPost/AnswerPost';
+import EditAnswer from './components/EditAnswer/EditAnswer';
 
 
 
@@ -23,10 +24,12 @@ function AppRoutes() {
       <Route path="/UserAccount" Component={UserAccount}/>
       <Route path="/Home" Component={Home}/>
       <Route path="/CreatePost" Component={CreatePost}/>
-      <Route path="/Answer/:id" Component={Answer}/>
+      <Route path="/Answer/:id" Component={AnswerPost}/>
       <Route path="/MyAnswers" Component={MyAnswers}/>
+      <Route path="/MyAnswers/:id" Component={EditAnswer}/>
       <Route path="/MyQuestions" Component={MyQuestions}/>
-      <Route path="/Question/:id" Component={Question}/>
+      <Route path="/Question/:id" Component={EditQuestion}/>
+
     </Routes>
   </Router>
   );

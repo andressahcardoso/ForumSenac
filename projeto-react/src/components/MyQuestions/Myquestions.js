@@ -45,10 +45,11 @@ function MyQuestions() {
         <Sidebar />
       </Nav>
       <Main>
+        <h2>Minhas perguntas</h2>
         {userPost.map((post) => {
           return (
             <div style={{display: "flex", flexDirection: 'column'}}>
-              <h2>{post.post_titulo}</h2>
+              <h3>{post.post_titulo}</h3>
               <p>{post.post_conteudo}</p>
               <span>{post.autor_nome + ' | ' + formatRelativeDate(post.post_data_criacao)}</span>
               <button onClick={() => navigate(`/Question/${post.post_id}`)}>Editar post</button>

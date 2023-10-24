@@ -5,17 +5,17 @@ import { Sidebar } from '../SideBar/SideBar';
 import HeaderComponent from '../Header/Header';
 
 function CreatePost() {
-  const [title, setTitle] = useState(''); // Inicialize o estado com uma string vazia
-  const [content, setContent] = useState(''); // Inicialize o estado com uma string vazia
-
+  const [title, setTitle] = useState(''); 
+  const [content, setContent] = useState(''); 
+  const userId = localStorage.getItem('userId')
   async function handleSubmit(e) {
-    e.preventDefault(); // Evite o comportamento padrão de envio do formulário
+    e.preventDefault(); 
 
     try {
       const response = await axios.post('http://localhost:3008/api/createPost', {
         titulo: title,
         conteudo: content,
-        autor_id: 3
+        autor_id: userId
       });
 
 

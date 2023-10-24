@@ -26,6 +26,9 @@ function HeaderSearch() {
     const handleLogout = () => {
         localStorage.removeItem('email')
         localStorage.removeItem('token')
+        localStorage.removeItem('userId');
+        localStorage.removeItem('name');
+        
         navigate('/')
     }
 

@@ -7,6 +7,7 @@ import axios from "axios";
 import { ptBR } from "date-fns/locale";
 
 export const Card = ({ posts }) => {
+  console.log(posts)
   return (
     <>
       {posts.map((item) => (
@@ -24,7 +25,7 @@ const PostCard = ({ post }) => {
     async function fetchPost() {
       try {
         const response = await axios.get(
-          `http://localhost:3008/api/getCommentsForPost/${id}`
+          `http://localhost:3008/api/comments/post/${id}`
         );
 
         setNumberComments(response.data.length);
@@ -33,7 +34,7 @@ const PostCard = ({ post }) => {
       }
     }
     fetchPost();
-  }, [id]); // Certifique-se de que o efeito seja acionado quando o 'id' muda.
+  }, [id]); 
 
   const dataCriacao = new Date(post.post_data_criacao);
   const dataCriacaoFormatada = formatDistanceToNow(dataCriacao, {
@@ -63,7 +64,7 @@ const PostCard = ({ post }) => {
           <span>{dataCriacaoFormatada} atrás</span>
           <span>
             <BiMessageAltDetail />
-            {numberComments}
+            {numberComments ? numberComments : 0}
           </span>
         </InformacoesCard>
       </CardForum>
