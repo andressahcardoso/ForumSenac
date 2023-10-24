@@ -205,8 +205,22 @@ O roteador `postRouter` é responsável por operações relacionadas a postagens
 
 - **Método HTTP:** GET
 - **Endpoint:** /posts/:id
+- **Controlador:** `getPostsByUser` no `postController`
+- **Descrição:** Retorna os detalhes de uma postagem específica com base no ID do usuario fornecido.
+
+### Consultar uma Postagem por ID do usuario
+
+- **Método HTTP:** GET
+- **Endpoint:** /posts/:id
 - **Controlador:** `getPostById` no `postController`
 - **Descrição:** Retorna os detalhes de uma postagem específica com base no ID fornecido.
+
+### Atualizar uma Postagem por ID do usuario
+
+- **Método HTTP:** PUT
+- **Endpoint:** /posts/update/:id
+- **Controlador:** `updatePost` no `postController`
+- **Descrição:** Atualiza os dados do post 
 
 ### Criar Comentário em uma Postagem
 
