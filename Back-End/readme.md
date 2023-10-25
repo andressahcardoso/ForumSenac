@@ -193,12 +193,33 @@ http://localhost:3008/api/users
 - **Controlador:** `storeUser` no `userController`
 - **Descrição:** Cria um novo usuário com base nos dados fornecidos no corpo da requisição.
 
+``` CODE
+http://localhost:3008/api/user/create
+```
+``` JSON
+{
+	"nome": "Exemplo",
+	"email": "Exemplo@gmail.com",
+	"senha": "12345"
+}
+```
+
 ### Atualizar Usuário
 
 - **Método HTTP:** PUT
 - **Endpoint:** /user/:id
 - **Controlador:** `updateUser` no `userController`
 - **Descrição:** Atualiza as informações de um usuário específico com base no ID fornecido.
+``` CODE
+http://localhost:3008/api/user/1
+```
+``` JSON
+{
+	"nome": "Exemplo",
+	"email": "Exemplo@gmail.com",
+	"senha": "12345"
+}
+```
 
 ### Excluir Usuário
 
@@ -206,6 +227,24 @@ http://localhost:3008/api/users
 - **Endpoint:** /user/:id
 - **Controlador:** `deleteUser` no `userController`
 - **Descrição:** Remove um usuário específico com base no ID fornecido.
+``` CODE
+http://localhost:3008/api/user/1
+```
+``` JSON
+{
+	"success": true,
+	"message": "Sucesso! Usuário deletado.",
+	"data": {
+		"fieldCount": 0,
+		"affectedRows": 1,
+		"insertId": 0,
+		"info": "",
+		"serverStatus": 2,
+		"warningStatus": 0,
+		"changedRows": 0
+	}
+}
+```
 
 ## postRouter
 
