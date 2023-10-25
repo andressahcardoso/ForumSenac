@@ -48,11 +48,13 @@ export const Nav = styled.div`
 export const Main = styled.div`
     grid-area: Main;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    margin-top: -4vh;
-   
+    align-items: center;
+    margin-top: 4vh;
+    height:700px;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: visible;
    
 `
 

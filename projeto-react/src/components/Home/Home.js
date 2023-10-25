@@ -12,13 +12,13 @@ import axios from 'axios';
 
 
 function Home() {
-  const [posts, setPosts] = useState([]); // Estado para armazenar os posts
+  const [posts, setPosts] = useState([]); 
 
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const response = await axios.get('http://localhost:3008/api/posts'); // Atualize a URL conforme necessário
-        setPosts(response.data); // Armazena os posts no estado
+        const response = await axios.get('http://localhost:3008/api/posts'); 
+        setPosts(response.data); 
         
       } catch (error) {
         console.error('Erro ao recuperar os posts:', error);
