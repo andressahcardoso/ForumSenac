@@ -5,13 +5,13 @@ export const HomeContainer = styled.div`
     grid-template-columns: 16vw 71vw 13vw;
     grid-template-rows: 10vh 45vh 45vh;
     grid-template-areas: 'Header Header Header'
-                            'Nav Main TopicNav'
-                            'Nav Main TopicNav';
+                            'Nav Main Main'
+                            'Nav Main Main';
+    overflow: hidden;
 `
 
 export const Header = styled.div`
     grid-area: Header;
-
 
     background-color: #FFFF;
     box-shadow: 0px 4px 4px #00000046;
@@ -47,13 +47,26 @@ export const Nav = styled.div`
 
 export const Main = styled.div`
     grid-area: Main;
-    display: flex;
+    padding-top: 4vh;
+    
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin-top: -4vh;
+    overflow: visible;
+    margin-left: 12.5vw;
+    overflow: scroll;
    
-   
+    &::-webkit-scrollbar-track {
+    background-color: white;
+    }
+    &::-webkit-scrollbar {
+        width: 6px;
+        background: white;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: white;
+    }
 `
 
 export const TopicNav = styled.div`

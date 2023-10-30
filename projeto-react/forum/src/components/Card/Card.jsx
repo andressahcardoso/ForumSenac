@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ImagemComputador from '../../assets/computador-card.png'
 
 export const CardForum = styled.button`
-  width: 50vw;
+  width: 60vw;
   height: 35vh;
   background-color: var(--branco);
   border-radius: 20px;
@@ -10,6 +10,7 @@ export const CardForum = styled.button`
   padding: 1vw 2vw;
   border: 0.1vw solid var(--laranja);
   margin-top: 4vh;
+  margin-bottom: 1vh;
   background-image: url(${ImagemComputador});
   background-size: 15vw 100%; 
   background-position: right;
@@ -19,8 +20,8 @@ export const CardForum = styled.button`
   h1{
     font-size: var(--fonte-titulo);
     font-family: var(--fonte-montserrat);
-    padding-right: 20vw;
     margin-top: 1vh;
+    text-align: left;
   }
 
   p{

@@ -39,9 +39,6 @@ function Home() {
       <Main>
         <Card posts={posts} />
       </Main>
-
-   
-
     </HomeContainer>
   );
 };

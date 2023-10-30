@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import HeaderComponent from '../Header/Header';
 import { Sidebar } from '../SideBar/SideBar';
-import { Header, HomeContainer, Main, Nav } from '../UserAccount/styled';
+import { Header, HomeContainer, Nav } from '../UserAccount/styled';
 import axios from 'axios';
 import { formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { Main, TitleDiv, PostInfo, Image, Content, Textarea, Button, CommentDiv } from './styled';
+
+import ImagemComputador from '../../assets/computador-card.png'
 
 function Answer() {
     const [post, setPost] = useState(null);
@@ -67,12 +70,17 @@ function Answer() {
                 <Main>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         {post ? (
-                            <div style={{display: 'flex', flexDirection: 'column'}}>
-                                <h1>{post.post_titulo}</h1>
-                                <p>{post.post_conteudo}</p>
-                                <span>Postado por: {post.autor_nome}</span>
-                                <span>Data de criação: {formatRelativeDate(post.post_data_criacao)}</span>
-                            </div>
+                            <TitleDiv>
+                                <PostInfo>
+                                    <Image src={ImagemComputador}></Image>
+                                    <Content>
+                                        <h1>{post.post_titulo}</h1>
+                                        <p>{post.post_conteudo}</p>
+                                        <span>Postado por: {post.autor_nome}</span>
+                                        <span>Data de criação: {formatRelativeDate(post.post_data_criacao)}</span>
+                                    </Content>
+                                </PostInfo>
+                            </TitleDiv>
                         ) : (
                             <>
                                 <p>Carregando o post...</p>
@@ -83,21 +91,23 @@ function Answer() {
                         {comments.map((item, index) => {
                             return (
                                 <div key={index}>
-                                    <span>{item.autor_nome + ' | ' + formatRelativeDate(item.comentario_data_criacao)}</span>
-                                    <p>{item.comentario_texto}</p>
+                                    <CommentDiv>
+                                        <span>{item.autor_nome + ' | ' + formatRelativeDate(item.comentario_data_criacao)}</span>
+                                        <p>{item.comentario_texto}</p>
+                                    </CommentDiv>
                                 </div>
                             );
                         })}
 
                         <h2>Participe da discussão</h2>
                         <form onSubmit={handleSubmmit} style={{ display: 'flex', flexDirection: 'column' }}>
-                            <textarea
+                            <Textarea
                                 value={newComment}
                                 onChange={(e) => setNewComment(e.target.value)}
-                            ></textarea>
-                            <button
+                            ></Textarea>
+                            <Button
                                 type='submit'
-                                style={{ margin: '20px 0' }}>Adicionar comentário</button>
+                                style={{ margin: '20px 0' }}>Adicionar comentário</Button>
                         </form>
                     </div>
                 </Main>
