@@ -1,5 +1,63 @@
 const connection = require('../config/db');
 
+
+// Consultar todos os posts de um usuário
+async function getPostsByUser(req, res) {
+  const userId = req.params.id; // Supondo que você obtenha o ID do usuário a partir dos parâmetros da rota
+
+  const query = `
+    SELECT
+        posts.id AS post_id,
+        posts.titulo AS post_titulo,
+        posts.conteudo AS post_conteudo,
+        posts.data_criacao AS post_data_criacao,
+        usuarios.nome AS autor_nome
+    FROM
+        posts
+    JOIN
+        usuarios ON posts.autor_id = usuarios.id
+    WHERE
+        posts.autor_id = ?;
+  `;
+
+  connection.query(query, [userId], (error, results) => {
+    if (error) {
+      console.error('Erro ao recuperar os posts do usuário: ' + error.message);
+      return res.status(500).json({ error: 'Erro ao recuperar os posts do usuário' });
+    }
+
+    res.json(results);
+  });
+}
+
+// Atualizar um post (somente o autor)
+async function updatePost(req, res) {
+  const postId = req.params.id;
+  const { titulo, conteudo, autor_id } = req.body;
+
+  if (!titulo || !conteudo) {
+    return res.status(400).json({ error: 'Campos obrigatórios não preenchidos' });
+  }
+
+  const query = 'UPDATE posts SET titulo = ?, conteudo = ? WHERE id = ? AND autor_id = ?';
+  const values = [titulo, conteudo, postId, autor_id];
+
+  connection.query(query, values, (error, result) => {
+    if (error) {
+      console.error('Erro ao atualizar o post: ' + error.message);
+      return res.status(500).json({ error: 'Erro ao atualizar o post' });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(403).json({ error: 'Não autorizado a editar este post ou post não encontrado' });
+    }
+
+    res.json({ message: 'Post atualizado com sucesso' });
+  });
+}
+
+// ---------------- COMENTARIOS ------------------
+
 // Criar os posts
 async function createPost(req, res) {
   const { titulo, conteudo, autor_id } = req.body;
@@ -130,10 +188,109 @@ async function getCommentsForPost(req, res) {
   });
 }
 
+
+
+
+
+
+// Consultar todas as respostas de um usuário em todos os posts
+async function getCommentsByUser(req, res) {
+  const userId = req.params.userId; // ID do usuário
+
+  const query = `
+    SELECT
+        comentarios.id AS comentario_id,
+        comentarios.texto AS comentario_texto,
+        comentarios.data_criacao AS comentario_data_criacao,
+        usuarios.nome AS autor_nome,
+        posts.titulo AS post_titulo
+    FROM
+        comentarios
+    JOIN
+        usuarios ON comentarios.autor_id = usuarios.id
+    JOIN
+        posts ON comentarios.post_id = posts.id
+    WHERE
+        comentarios.autor_id = ?;
+  `;
+
+  connection.query(query, [userId], (error, results) => {
+    if (error) {
+      console.error('Erro ao recuperar os comentários do usuário: ' + error.message);
+      return res.status(500).json({ error: 'Erro ao recuperar os comentários do usuário' });
+    }
+
+    res.json(results);
+  });
+}
+
+// Consultar um comentário por ID
+async function getCommentById(req, res) {
+  const commentId = req.params.id;
+
+  const query = `
+    SELECT
+        comentarios.id AS comentario_id,
+        comentarios.texto AS comentario_texto,
+        comentarios.data_criacao AS comentario_data_criacao,
+        usuarios.nome AS autor_nome
+    FROM
+        comentarios
+    JOIN
+        usuarios ON comentarios.autor_id = usuarios.id
+    WHERE
+        comentarios.id = ?; 
+  `;
+
+  connection.query(query, [commentId], (error, results) => {
+    if (error) {
+      console.error('Erro ao recuperar o comentário: ' + error.message);
+      return res.status(500).json({ error: 'Erro ao recuperar o comentário' });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ error: 'Comentário não encontrado' });
+    }
+
+    res.json(results[0]);
+  });
+}
+
+// Atualizar um comentário
+async function updateComment(req, res) {
+  const commentId = req.params.id;
+  const { texto, autor_id } = req.body;
+
+  if (!texto) {
+    return res.status(400).json({ error: 'Campos obrigatórios não preenchidos' });
+  }
+
+  const query = 'UPDATE comentarios SET texto = ? WHERE id = ? AND autor_id = ?';
+  const values = [texto, commentId, autor_id];
+
+  connection.query(query, values, (error, result) => {
+    if (error) {
+      console.error('Erro ao atualizar o comentário: ' + error.message);
+      return res.status(500).json({ error: 'Erro ao atualizar o comentário' });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(403).json({ error: 'Não autorizado a editar este comentário ou comentário não encontrado' });
+    }
+
+    res.json({ message: 'Comentário atualizado com sucesso' });
+  });
+}
+
 module.exports = {
   createPost,
   getAllPosts,
   getPostById,
   createComment,
-  getCommentsForPost
+  getCommentsForPost,
+  getPostsByUser,
+  updatePost,
+  getCommentsByUser,
+  getCommentById,
+  updateComment,
 };

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { HomeContainer, Header, Nav, Main } from './styled';
+import { HomeContainer, Header, Nav, Main, Title, TextDiv, TextDiv2, Input, TextArea, Button, ButtonDiv} from './styled';
 import axios from 'axios';
 import { Sidebar } from '../SideBar/SideBar';
 import HeaderComponent from '../Header/Header';
+import { useNavigate } from 'react-router';
 
 function CreatePost() {
+  const navigate = useNavigate();
   const [title, setTitle] = useState(''); // Inicialize o estado com uma string vazia
   const [content, setContent] = useState(''); // Inicialize o estado com uma string vazia
 
@@ -12,7 +14,7 @@ function CreatePost() {
     e.preventDefault(); // Evite o comportamento padrão de envio do formulário
 
     try {
-      const response = await axios.post('http://localhost:3008/api/createPost', {
+      const response = await axios.post('http://localhost:3001/api/createPost', {
         titulo: title,
         conteudo: content,
         autor_id: 3
@@ -20,9 +22,11 @@ function CreatePost() {
 
 
       console.log('Post criado com sucesso:', response.data);
+      navigate('/Home')
     } catch (error) {
       console.error('Erro ao criar o post:', error);
     }
+
   }
 
   return (
@@ -35,20 +39,26 @@ function CreatePost() {
       </Nav>
       <Main>
         <form onSubmit={handleSubmit}>
-          <label>Título do post</label>
-          <input
+          <TextDiv>
+            <Title>Título do post</Title>
+          </TextDiv>
+          <Input
             placeholder='Digite o título do post...'
             value={title}
             onChange={(e) => setTitle(e.target.value)} // Corrija o evento onChange
-          ></input>
+          ></Input>
 
-          <label>Conteúdo do post</label>
-          <textarea
+          <TextDiv2>
+          <Title>Conteúdo do post</Title>
+          </TextDiv2>
+          <TextArea
             placeholder='Digite o conteúdo do post'
             value={content}
             onChange={(e) => setContent(e.target.value)} // Corrija o evento onChange
-          ></textarea>
-          <button type='submit'>Criar post</button>
+          ></TextArea>
+          <ButtonDiv>
+            <Button type='submit'>Criar post</Button>
+          </ButtonDiv>
         </form>
       </Main>
     </HomeContainer>

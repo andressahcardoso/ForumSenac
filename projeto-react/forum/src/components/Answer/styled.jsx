@@ -38,6 +38,12 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     padding-left: 2vh;
+    margin-top: -2vh;
+
+`
+
+export const Title = styled.h1`
+    margin-bottom: 0vh;
 `
 
 export const Textarea = styled.textarea`
@@ -63,4 +69,15 @@ export const CommentDiv = styled.div`
     margin-top: 2vh;
     padding: 2vh;
     padding-bottom: 1vh;
+`
+
+export const EditBtn = styled.button`
+    background-color: var(--laranja);
+    border: 0px;
+    color: white;
+    border-radius: 20px;
+    width: 10vw;
+    margin-top: 2vh;
+    margin-left: 67vw;
+    padding: 2vh;
 `

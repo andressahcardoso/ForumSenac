@@ -9,7 +9,12 @@ const {
    getAllPosts,   
    getPostById,
    createComment,
-   getCommentsForPost
+   getCommentsForPost,
+   updatePost,
+   getPostsByUser,
+   getCommentById,
+   getCommentsByUser,
+   updateComment
 } = require('../controllers/postController')
 
 // Criar os endpoints (rotas) que serão acessados a partir dos métodos HTTP (get,post,put,delete)
@@ -17,9 +22,15 @@ router.post('/createPost', createPost);
 router.get('/posts', getAllPosts);
 router.get('/posts/:id', getPostById);
 
+router.get('/posts/user/:id', getPostsByUser);
+router.put('/posts/update/:id', updatePost);
 
 router.post('/createComment', createComment);
 router.get('/getCommentsForPost/:id', getCommentsForPost);
+
+router.get('/comments/:id', getCommentById);
+router.get('/comments/:userId/responses', getCommentsByUser);
+router.put('/comments/post/update/:id', updateComment); 
 
 
 

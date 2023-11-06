@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ImagemComputador from '../../assets/computador-card.png'
 
 export const CardForum = styled.button`
-  width: 60vw;
+  width: 65vw;
   height: 35vh;
   background-color: var(--branco);
   border-radius: 20px;
@@ -56,3 +56,11 @@ export const InformacoesCard = styled.div`
     font-size: 20px;
   }
 `;
+
+export const Button = styled.button`
+  border: 1px solid var(--laranja);
+  background-color: var(--laranja);
+  color: white;
+  border-radius: 10px;
+  width: 6vw;
+`

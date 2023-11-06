@@ -7,6 +7,9 @@ import CreatePost from './components/CreatePost/CreatePost';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MyAnswers from './components/MyAnswers/MyAnswers';
 import Answer from './components/Answer/Answer';
+import EditPost from './components/EditPost/EditPost';
+import EditAnswer from './components/EditAnswer/EditAnswer';
+import EditUserPost from './components/EditUserPost/EditUserPost';
 
 
 
@@ -22,7 +25,10 @@ function AppRoutes() {
       <Route path="/Home" Component={Home}/>
       <Route path="/CreatePost" Component={CreatePost}/>
       <Route path="/Answer/:id" Component={Answer}/>
-
+      <Route path="/EditPost" Component={EditPost}/>
+      <Route path="/EditUserPost/:id" Component={EditUserPost}/>
+      
+      <Route path="/MyAnswers/:id" Component={EditAnswer}/>
       <Route path="/MyAnswers" Component={MyAnswers}/>
     </Routes>
   </Router>

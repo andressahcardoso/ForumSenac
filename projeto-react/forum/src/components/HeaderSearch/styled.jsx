@@ -25,7 +25,7 @@ export const InputStyled = styled.input`
     font-weight: var(--fonte-largura-negrito); */
 
     letter-spacing: 2px;
-
+    
     height: 6vh;
     width: 40vw;
     padding: 0px 10px;

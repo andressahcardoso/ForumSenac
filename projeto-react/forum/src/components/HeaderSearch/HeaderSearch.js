@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
-import test from '../../assets/loginImg.jpg'
+import userImage from '../../assets/userImage.PNG'
 
 
 function HeaderSearch() {
@@ -24,8 +24,7 @@ function HeaderSearch() {
     }, [navigate])
 
     const handleLogout = () => {
-        localStorage.removeItem('email')
-        localStorage.removeItem('token')
+        localStorage.clear()
         navigate('/')
     }
 
@@ -39,7 +38,7 @@ function HeaderSearch() {
           <BtnLogOut onClick={handleLogout}>Sair</BtnLogOut>
         <Link to={'/UserAccount'}>
           <AreaImageUser
-            src={test}
+            src={userImage}
             alt='Imagem do usuário' /></Link>
         </DivLogOut>
         {/* <AreaImageUser

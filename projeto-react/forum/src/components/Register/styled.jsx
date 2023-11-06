@@ -20,7 +20,8 @@ export const  SignInDiv = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;   
-    margin: 4vw;
+    margin: 6vw;
+    height: 70vh;
     
 `
 
