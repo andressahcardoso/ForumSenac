@@ -24,7 +24,6 @@ function Register() {
     try {
       const response = await axios.post('http://localhost:3001/api/user/create', userData);
       if (response.data.success) {
-        console.log(response)
         navigate('/');
       } else {
         console.error('Erro no registro:', response.data.message);

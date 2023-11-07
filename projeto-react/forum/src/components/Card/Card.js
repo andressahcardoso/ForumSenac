@@ -1,4 +1,4 @@
-import { CardForum, Container, InformacoesCard, Button } from "./Card.jsx";
+import { CardForum, InformacoesCard, Button } from "./Card.jsx";
 
 // Date
 import { formatDistanceToNow } from 'date-fns';
@@ -6,7 +6,7 @@ import { ptBR } from 'date-fns/locale';
 
 // React
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { BiMessageAltDetail } from 'react-icons/bi';
 
 // Images
