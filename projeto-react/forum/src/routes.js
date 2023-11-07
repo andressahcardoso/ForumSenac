@@ -1,10 +1,12 @@
 import { NotFound } from './pages/NotFound';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Components
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import UserAccount from './components/UserAccount/UserAccount'
 import Home from '../src/components/Home/Home'
 import CreatePost from './components/CreatePost/CreatePost';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MyAnswers from './components/MyAnswers/MyAnswers';
 import Answer from './components/Answer/Answer';
 import EditPost from './components/EditPost/EditPost';
@@ -23,11 +25,12 @@ function AppRoutes() {
       <Route path="/Register" Component={Register} />
       <Route path="/UserAccount" Component={UserAccount}/>
       <Route path="/Home" Component={Home}/>
+
       <Route path="/CreatePost" Component={CreatePost}/>
-      <Route path="/Answer/:id" Component={Answer}/>
       <Route path="/EditPost" Component={EditPost}/>
       <Route path="/EditUserPost/:id" Component={EditUserPost}/>
-      
+
+      <Route path="/Answer/:id" Component={Answer}/>
       <Route path="/MyAnswers/:id" Component={EditAnswer}/>
       <Route path="/MyAnswers" Component={MyAnswers}/>
     </Routes>
