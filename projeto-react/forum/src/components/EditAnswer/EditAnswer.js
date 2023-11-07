@@ -26,6 +26,7 @@ function EditAnswer() {
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
 
+    console.log('id :', id);
     try {
       const response = await axios.put(
         `http://localhost:3001/api/comments/post/update/${id}`,

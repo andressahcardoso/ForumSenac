@@ -17,6 +17,10 @@ export const Card = ({ posts, user }) => {
                 const dataCriacao = new Date(item.post_data_criacao);
                 const dataCriacaoFormatada = formatDistanceToNow(dataCriacao, { locale: ptBR });
 
+                function goToAnswer() {
+                    navigate(`/Answer/${item.post_id}`)
+                }
+
                 return (
                     <>
                         {/* Use o valor de item.post_id para criar links dinâmicos */}
@@ -42,11 +46,11 @@ export const Card = ({ posts, user }) => {
                                         {dataCriacaoFormatada} atrás
                                     </span>
                                     {user === true  && <Button onClick={() => navigate(`/EditUserPost/${item.post_id}`)}>Editar</Button>}
-                                    <Link to={`/Answer/${item.post_id}`}>
-                                    <span>
+                                   
+                                    <span onClick={goToAnswer}>
                                         <BiMessageAltDetail />
                                         5
-                                    </span></Link>
+                                    </span>
                                 </InformacoesCard>
                             </CardForum>
                         

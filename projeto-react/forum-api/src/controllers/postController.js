@@ -17,7 +17,8 @@ async function getPostsByUser(req, res) {
     JOIN
         usuarios ON posts.autor_id = usuarios.id
     WHERE
-        posts.autor_id = ?;
+        posts.autor_id = ?
+    ORDER BY posts.data_criacao DESC;
   `;
 
   connection.query(query, [userId], (error, results) => {
@@ -92,6 +93,7 @@ async function getAllPosts(req, res) {
         posts
     JOIN
         usuarios ON posts.autor_id = usuarios.id
+    ORDER BY posts.data_criacao DESC;
   `;
 
   connection.query(query, (error, results) => {
@@ -120,7 +122,7 @@ async function getPostById(req, res) {
     JOIN
         usuarios ON posts.autor_id = usuarios.id
     WHERE
-        posts.id = ?; 
+        posts.id = ?
   `;
 
   connection.query(query, [postId], (error, results) => {
