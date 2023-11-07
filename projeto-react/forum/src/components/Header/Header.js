@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import LogoSenac from '../../assets/logoSenac.png'
 import {AreaLogo, AreaImageUser, BtnLogOut, DivLogOut} from './styled'
 import {Link} from 'react-router-dom'
-import test from '../../assets/loginImg.jpg'
+import test from '../../assets/userImage.PNG'
 
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';

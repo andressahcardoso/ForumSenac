@@ -9,7 +9,7 @@ import {BiImageAdd} from 'react-icons/bi'
 import { Sidebar } from '../SideBar/SideBar';
 import HeaderComponent from '../Header/Header';
 
-import UserImgTest from '../../assets/loginImg.jpg'
+import UserImgTest from '../../assets/userImage.PNG'
 
 
 function Home(props) {
