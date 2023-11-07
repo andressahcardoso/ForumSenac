@@ -1,10 +1,63 @@
 const connection = require('../config/db');
 
 
-// Consultar todos os posts de um usuário
-async function getPostsByUser(req, res) {
-  const userId = req.params.id; // Supondo que você obtenha o ID do usuário a partir dos parâmetros da rota
+// ---------------- Publicações ------------------
 
+
+// POSTS | Criar os posts.
+async function createPost(req, res) {
+  const { titulo, conteudo, autor_id } = req.body;
+
+  if (!titulo || !conteudo || !autor_id) {
+    return res.status(400).json({ error: 'Campos obrigatórios não preenchidos' });
+  }
+
+  const query = 'INSERT INTO posts (titulo, conteudo, autor_id) VALUES (?, ?, ?)';
+  const values = [titulo, conteudo, autor_id];
+
+  connection.query(query, values, (error, result) => {
+    if (error) {
+      console.error('Erro ao criar o post: ' + error.message);
+      return res.status(500).json({ error: 'Erro ao criar o post' });
+    }
+
+    res.json({ message: 'Post criado com sucesso', postId: result.insertId });
+  });
+}
+
+
+// POSTS | Consultar todos os posts com JOIN para obter informações do autor.
+async function getAllPosts(req, res) {
+  const query = `
+    SELECT
+        posts.id AS post_id,
+        posts.titulo AS post_titulo,
+        posts.conteudo AS post_conteudo,
+        posts.data_criacao AS post_data_criacao,
+        usuarios.nome AS autor_nome
+    FROM
+        posts
+    JOIN
+        usuarios ON posts.autor_id = usuarios.id
+    ORDER BY posts.data_criacao DESC;
+  `;
+
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.error('Erro ao recuperar os posts: ' + error.message);
+      return res.status(500).json({ error: 'Erro ao recuperar os posts' });
+    }
+
+    res.json(results);
+  });
+}
+
+
+// POSTS | Consultar todos os posts de um usuário pelo ID.
+async function getPostsByUser(req, res) {
+
+  // Supondo que você obtenha o ID do usuário a partir dos parâmetros da rota.
+  const userId = req.params.id;
   const query = `
     SELECT
         posts.id AS post_id,
@@ -31,82 +84,8 @@ async function getPostsByUser(req, res) {
   });
 }
 
-// Atualizar um post (somente o autor)
-async function updatePost(req, res) {
-  const postId = req.params.id;
-  const { titulo, conteudo, autor_id } = req.body;
 
-  if (!titulo || !conteudo) {
-    return res.status(400).json({ error: 'Campos obrigatórios não preenchidos' });
-  }
-
-  const query = 'UPDATE posts SET titulo = ?, conteudo = ? WHERE id = ? AND autor_id = ?';
-  const values = [titulo, conteudo, postId, autor_id];
-
-  connection.query(query, values, (error, result) => {
-    if (error) {
-      console.error('Erro ao atualizar o post: ' + error.message);
-      return res.status(500).json({ error: 'Erro ao atualizar o post' });
-    }
-
-    if (result.affectedRows === 0) {
-      return res.status(403).json({ error: 'Não autorizado a editar este post ou post não encontrado' });
-    }
-
-    res.json({ message: 'Post atualizado com sucesso' });
-  });
-}
-
-// ---------------- COMENTARIOS ------------------
-
-// Criar os posts
-async function createPost(req, res) {
-  const { titulo, conteudo, autor_id } = req.body;
-
-  if (!titulo || !conteudo || !autor_id) {
-    return res.status(400).json({ error: 'Campos obrigatórios não preenchidos' });
-  }
-
-  const query = 'INSERT INTO posts (titulo, conteudo, autor_id) VALUES (?, ?, ?)';
-  const values = [titulo, conteudo, autor_id];
-
-  connection.query(query, values, (error, result) => {
-    if (error) {
-      console.error('Erro ao criar o post: ' + error.message);
-      return res.status(500).json({ error: 'Erro ao criar o post' });
-    }
-
-    res.json({ message: 'Post criado com sucesso', postId: result.insertId });
-  });
-}
-
-// Consultar todos os posts com JOIN para obter informações do autor
-async function getAllPosts(req, res) {
-  const query = `
-    SELECT
-        posts.id AS post_id,
-        posts.titulo AS post_titulo,
-        posts.conteudo AS post_conteudo,
-        posts.data_criacao AS post_data_criacao,
-        usuarios.nome AS autor_nome
-    FROM
-        posts
-    JOIN
-        usuarios ON posts.autor_id = usuarios.id
-    ORDER BY posts.data_criacao DESC;
-  `;
-
-  connection.query(query, (error, results) => {
-    if (error) {
-      console.error('Erro ao recuperar os posts: ' + error.message);
-      return res.status(500).json({ error: 'Erro ao recuperar os posts' });
-    }
-
-    res.json(results);
-  });
-}
-
-// Consultar um post por id
+// POSTS | Consultar um post pelo seu ID.
 async function getPostById(req, res) {
   const postId = req.params.id;
 
@@ -140,7 +119,38 @@ async function getPostById(req, res) {
 }
 
 
-// Criar um comentário
+// POSTS | Atualizar um post (somente o autor).
+async function updatePost(req, res) {
+  const postId = req.params.id;
+  const { titulo, conteudo, autor_id } = req.body;
+
+  if (!titulo || !conteudo) {
+    return res.status(400).json({ error: 'Campos obrigatórios não preenchidos' });
+  }
+
+  const query = 'UPDATE posts SET titulo = ?, conteudo = ? WHERE id = ? AND autor_id = ?';
+  const values = [titulo, conteudo, postId, autor_id];
+
+  connection.query(query, values, (error, result) => {
+    if (error) {
+      console.error('Erro ao atualizar o post: ' + error.message);
+      return res.status(500).json({ error: 'Erro ao atualizar o post' });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(403).json({ error: 'Não autorizado a editar este post ou post não encontrado' });
+    }
+
+    res.json({ message: 'Post atualizado com sucesso' });
+  });
+}
+
+
+
+// ---------------- Comments ------------------
+
+
+// COMMENT | Criar um comentário.
 async function createComment(req, res) {
   const { texto, autor_id, post_id } = req.body;
 
@@ -162,7 +172,7 @@ async function createComment(req, res) {
 }
 
 
-// Consultar todos os comentários para um post específico
+// COMMENT | Consultar todos os comentários para um post específico
 async function getCommentsForPost(req, res) {
   const postId = req.params.id;
 
@@ -191,13 +201,9 @@ async function getCommentsForPost(req, res) {
 }
 
 
-
-
-
-
-// Consultar todas as respostas de um usuário em todos os posts
+// COMMENT | Consultar todas as respostas de um usuário em todos os posts.
 async function getCommentsByUser(req, res) {
-  const userId = req.params.userId; // ID do usuário
+  const userId = req.params.userId;
 
   const query = `
     SELECT
@@ -226,7 +232,8 @@ async function getCommentsByUser(req, res) {
   });
 }
 
-// Consultar um comentário por ID
+
+// COMMENT | Consultar um comentário por ID.
 async function getCommentById(req, res) {
   const commentId = req.params.id;
 
@@ -258,7 +265,8 @@ async function getCommentById(req, res) {
   });
 }
 
-// Atualizar um comentário
+
+// COMMENT | Atualizar um comentário.
 async function updateComment(req, res) {
   const commentId = req.params.id;
   const { texto, autor_id } = req.body;
@@ -283,6 +291,7 @@ async function updateComment(req, res) {
     res.json({ message: 'Comentário atualizado com sucesso' });
   });
 }
+
 
 module.exports = {
   createPost,
