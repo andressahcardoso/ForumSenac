@@ -25,7 +25,7 @@ function CreatePost() {
       const response = await axios.post('http://localhost:3001/api/createPost', {
         titulo: title,
         conteudo: content,
-        autor_id: 3
+        autor_id: localStorage.getItem("userId")
       });
 
 
