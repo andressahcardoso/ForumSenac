@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
 import { HomeContainer, Header, Nav, Main, Title, TextDiv, TextDiv2, Input, TextArea, Button, ButtonDiv} from './styled';
+
+// React
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
+
+// Axios
 import axios from 'axios';
+
+// Components
 import { Sidebar } from '../SideBar/SideBar';
 import HeaderComponent from '../Header/Header';
-import { useNavigate } from 'react-router';
+
 
 function CreatePost() {
   const navigate = useNavigate();
-  const [title, setTitle] = useState(''); // Inicialize o estado com uma string vazia
-  const [content, setContent] = useState(''); // Inicialize o estado com uma string vazia
+
+  const [title, setTitle] = useState(''); 
+  const [content, setContent] = useState('');
 
   async function handleSubmit(e) {
-    e.preventDefault(); // Evite o comportamento padrão de envio do formulário
+    e.preventDefault();
 
     try {
       const response = await axios.post('http://localhost:3001/api/createPost', {
@@ -45,7 +53,7 @@ function CreatePost() {
           <Input
             placeholder='Digite o título do post...'
             value={title}
-            onChange={(e) => setTitle(e.target.value)} // Corrija o evento onChange
+            onChange={(e) => setTitle(e.target.value)} 
           ></Input>
 
           <TextDiv2>
@@ -54,7 +62,7 @@ function CreatePost() {
           <TextArea
             placeholder='Digite o conteúdo do post'
             value={content}
-            onChange={(e) => setContent(e.target.value)} // Corrija o evento onChange
+            onChange={(e) => setContent(e.target.value)}
           ></TextArea>
           <ButtonDiv>
             <Button type='submit'>Criar post</Button>

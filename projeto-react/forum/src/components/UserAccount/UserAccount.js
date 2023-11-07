@@ -1,14 +1,17 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import {HomeContainer, Header, Nav, Main, PersonImg, TextArea, InputTexts, Input, InputTextsImg, Title, ButtonsDiv, OutButton, SaveButton, NameText } from './styled'
 
+// React
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { GrEdit } from "react-icons/gr";
 import {BsEyeSlashFill} from 'react-icons/bs'
 import {BiImageAdd} from 'react-icons/bi'
 
+// Components
 import { Sidebar } from '../SideBar/SideBar';
 import HeaderComponent from '../Header/Header';
 
+// Images
 import UserImgTest from '../../assets/userImage.PNG'
 
 

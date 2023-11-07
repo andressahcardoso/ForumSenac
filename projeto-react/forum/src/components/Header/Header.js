@@ -1,16 +1,15 @@
-import { useLocation } from 'react-router-dom';
-import LogoSenac from '../../assets/logoSenac.png'
 import {AreaLogo, AreaImageUser, BtnLogOut, DivLogOut} from './styled'
-import {Link} from 'react-router-dom'
-import test from '../../assets/userImage.PNG'
 
-import { useNavigate } from 'react-router-dom';
+// React
 import { useEffect } from 'react';
+import { useNavigate, Link} from 'react-router-dom';
+
+// Images
+import LogoSenac from '../../assets/logoSenac.png'
+import userImage from '../../assets/userImage.PNG'
+
 
 function HeaderComponent() {
-    const location = useLocation();
-    const user = location.state;
-
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -35,7 +34,7 @@ function HeaderComponent() {
           <BtnLogOut onClick={handleLogout}>Sair</BtnLogOut>
         <Link to={'/UserAccount'}>
           <AreaImageUser
-            src={test}
+            src={userImage}
             alt='Imagem do usuário' /></Link>
         </DivLogOut>
     </>

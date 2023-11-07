@@ -19,13 +19,8 @@ export const InputStyled = styled.input`
     background-color: var(--laranja);
     border-radius: 20px;
     border: none;
-
     color: #FFFF;
-    /* font-size: var(--fonte-texto);
-    font-weight: var(--fonte-largura-negrito); */
-
     letter-spacing: 2px;
-    
     height: 6vh;
     width: 40vw;
     padding: 0px 10px;
@@ -57,7 +52,9 @@ export const InputStyled = styled.input`
         width: 80%;
         margin: 1rem 0;
     }
-`;
+`
+
+
 export const AreaImageUser = styled.img`
    border-radius: 50%;
    width: 3vw;
@@ -75,22 +72,21 @@ export const AreaImageUser = styled.img`
         bottom:9rem;
         left: 9rem;
     }
-`;
+`
 
 export const DivLogOut = styled.div`
+    width: 10vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    width: 10vw;
 `
 export const BtnLogOut = styled.button`
-    height: 4vh;
-    border: 1px solid #d5700b;
-    background-color: white;
-    color: #F79535;
-    border-radius: 20px;
     width: 4vw;
     height: 4vh;
+    color: #F79535;
+    background-color: white;
+    border: 1px solid #d5700b;
+    border-radius: 20px;
 `

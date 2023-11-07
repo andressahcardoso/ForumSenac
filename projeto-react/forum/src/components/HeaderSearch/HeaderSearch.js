@@ -1,20 +1,16 @@
-import { useLocation } from 'react-router-dom';
-import LogoSenac from '../../assets/logoSenac.png'
 import {AreaLogo, InputStyled, AreaImageUser, BtnLogOut, DivLogOut} from './styled'
-import {Link} from 'react-router-dom'
 
-import { useNavigate } from 'react-router-dom';
+// React
 import { useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 
+// Images
+import LogoSenac from '../../assets/logoSenac.png'
 import userImage from '../../assets/userImage.PNG'
 
 
 function HeaderSearch() {
-    const location = useLocation();
-    const user = location.state;
-
-    
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -41,9 +37,6 @@ function HeaderSearch() {
             src={userImage}
             alt='Imagem do usuário' /></Link>
         </DivLogOut>
-        {/* <AreaImageUser
-            src={user?.picture}
-            alt='Imagem do usuário' /> */}
     </>
   );
 };

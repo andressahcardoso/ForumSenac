@@ -8,21 +8,20 @@ export const LoginContainer = styled.div`
 `
 
 export const LoginImg = styled.div`
-    grid-area: ImageL;
     height: 100vh;
+    grid-area: ImageL;
     background-image: url(${ImageLogin});
     background-size: cover;
 `
 
 export const  SignInDiv = styled.div`
     grid-area: SignIn;
+    height: 70vh;
+    margin: 6vw;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;   
-    margin: 6vw;
-    height: 70vh;
-    
 `
 
 export const Logo = styled.img`
@@ -30,11 +29,11 @@ export const Logo = styled.img`
 `
 
 export const Input = styled.input`
-    width: 29vw;
     height: 6vh;
+    width: 29vw;
+    padding-left: 1vw;
     border: 1px solid #F79535;
     border-radius: 10px;
-    padding-left: 1vw;
 `
 
 export const Button = styled.button`
@@ -62,12 +61,11 @@ export const SubText = styled.p`
 `
 
 export const TextDiv = styled.div`
-    display: flex;
     height: 4vh;
     width: 30vw;
+    display: flex;
 `
 
 export const TextSection = styled.section`
     margin-top: -6vh;
-    
 `

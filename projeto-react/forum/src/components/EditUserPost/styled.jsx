@@ -12,7 +12,6 @@ export const HomeContainer = styled.div`
 export const Header = styled.div`
     grid-area: Header;
 
-
     background-color: #FFFF;
     box-shadow: 0px 4px 4px #00000046;
     
@@ -34,7 +33,6 @@ export const Header = styled.div`
 
 export const Nav = styled.div`
     grid-area: Nav;
-    
 
     border-right: 5px solid var(--azul-claro);
     background-color: var(--branco);
@@ -50,7 +48,6 @@ export const Main = styled.div`
     display: flex;
     justify-content: center;
     padding-top: 10vh;
-
 `
 
 
@@ -61,47 +58,44 @@ export const Title = styled.h2`
 export const TextDiv = styled.div`
     height: 6vh;
     width: 80vw;
-    border-bottom: 1px solid var(--azul-claro);
     margin-top: -5vh;
-
+    border-bottom: 1px solid var(--azul-claro);
 `
 
 export const TextDiv2 = styled.div`
     height: 6vh;
     width: 80vw;
-    border-bottom: 1px solid var(--azul-claro);
     margin-top: 10vh;
-
+    border-bottom: 1px solid var(--azul-claro);
 `
 
 export const Input = styled.input`
-    border: 1.5px solid var(--azul-claro);
-    margin-top: 2vh;
     height: 6vh;
     width: 30vw;
+    margin-top: 2vh;
     padding-left: 1vw;
+    border: 1.5px solid var(--azul-claro);
     border-radius: 5px;
 `
 
 export const TextArea = styled.textarea`
- border: 1.5px solid var(--azul-claro);
-    margin-top: 2vh;
     height: 10vh;
     width: 50vw;
+    margin-top: 2vh;
     padding-left: 1vw;
     padding-top: 1vh;
+    border: 1.5px solid var(--azul-claro);
     border-radius: 5px;
-    
 `
 
 export const Button = styled.button`
-    border: 1.5px solid var(--laranja);
-    background-color: var(--laranja);
-    color: white;
-    border-radius: 15px;
-    margin-top: 10vh;
     height: 6vh;
     width: 10vw;
+    margin-top: 10vh;
+    color: white;
+    background-color: var(--laranja);
+    border: 1.5px solid var(--laranja);
+    border-radius: 15px;
 `
 
 export const ButtonDiv = styled.div`

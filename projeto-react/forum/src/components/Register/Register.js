@@ -1,41 +1,32 @@
+import { LoginContainer, LoginImg, SignInDiv, Logo, Input, Button, Line, Text, TextDiv, TextSection } from './styled';
+
+// React
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
-import {
-  LoginContainer,
-  LoginImg,
-  SignInDiv,
-  Logo,
-  Input,
-  Button,
-  Line,
-  Text,
-  SubText,
-  TextDiv,
-  TextSection,
-} from './styled';
+// Axios
+import axios from 'axios';
 
+// Image
 import LogoSenac from '../../assets/logoSenac.png';
 
+
 function Register() {
+  const navigate = useNavigate();
+
   const [userData, setUserData] = useState({
     nome: '',
     email: '',
     senha: '',
   });
-  const navigate = useNavigate();
 
   const handleRegister = async () => {
     try {
       const response = await axios.post('http://localhost:3001/api/user/create', userData);
-      // Verifique se o registro foi bem-sucedido
       if (response.data.success) {
-        // Redirecione o usuário para a página de login ou para onde desejar
         console.log(response)
         navigate('/');
       } else {
-        // Lidar com erros de registro
         console.error('Erro no registro:', response.data.message);
       }
     } catch (error) {

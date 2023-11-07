@@ -1,28 +1,21 @@
+import { LoginContainer, LoginImg, SignInDiv, Logo, Input, Button, Line, Text, SubText, TextDiv, TextSection, Form } from './styled';
+
+// React
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
-import {
-  LoginContainer,
-  LoginImg,
-  SignInDiv,
-  Logo,
-  Input,
-  Button,
-  Line,
-  Text,
-  SubText,
-  TextDiv,
-  TextSection,
-  Form,
-} from './styled';
+// Axios
+import axios from 'axios';
 
+// Images
 import LogoSenac from '../../assets/logoSenac.png';
 
+
 function Login() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,10 +35,6 @@ function Login() {
         localStorage.setItem('token', token);
         localStorage.setItem('userId', userId);
         localStorage.setItem('name', name);
-
-
-
-      
 
         // Define o token no cabeçalho das solicitações Axios
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;

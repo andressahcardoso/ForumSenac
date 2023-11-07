@@ -1,26 +1,34 @@
-import { useNavigate, useParams } from "react-router";
-import HeaderComponent from "../Header/Header";
-import { Sidebar } from "../SideBar/SideBar";
-import { Header, HomeContainer, Main, Nav, Form, TextArea, Button, TextDiv, Title, ButtonDiv, TextDiv2, Input } from "./styled";
+import { Header, HomeContainer, Main, Nav, TextArea, Button, TextDiv, Title, ButtonDiv, TextDiv2, Input } from "./styled";
+
+// React
 import { useCallback, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
+
+// Axios
 import axios from "axios";
 
+// Components
+import HeaderComponent from "../Header/Header";
+import { Sidebar } from "../SideBar/SideBar";
+
+
 function EditUserPost() {
-  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
+
   const userId = localStorage.getItem("userId");
-  const navigate = useNavigate();
+  const { id } = useParams();
 
   useEffect(() => {
     async function fetchComment() {
       try {
         const response = await axios.get(`http://localhost:3001/api/posts/${id}`);
-        console.log('================response :', response);
         setTitle(response.data.post_titulo)
         setContent(response.data.post_conteudo);
       } catch (error) {
-        console.error("Erro ao buscar o comentário:", error);
+        console.error("Erro ao buscar o post:", error);
       }
     }
     fetchComment();
@@ -66,7 +74,7 @@ function EditUserPost() {
           <Input
             placeholder={title}
             value={title}
-            onChange={(e) => setTitle(e.target.value)} // Corrija o evento onChange
+            onChange={(e) => setTitle(e.target.value)}
           ></Input>
 
           <TextDiv2>
@@ -75,7 +83,7 @@ function EditUserPost() {
           <TextArea
             placeholder={content}
             value={content}
-            onChange={(e) => setContent(e.target.value)} // Corrija o evento onChange
+            onChange={(e) => setContent(e.target.value)}
           ></TextArea>
           <ButtonDiv>
             <Button type='submit'>Editar post</Button>

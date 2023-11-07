@@ -1,6 +1,7 @@
 import { SidebarNavigationContainer, SidebarNavList, SidebarNavItem, LinkText } from './styled';
+
+// React
 import { RiHome2Line } from 'react-icons/ri';
-import { HiOutlineLightBulb } from 'react-icons/hi';
 import { RiQuestionnaireLine } from 'react-icons/ri';
 import { BiCommentDetail } from 'react-icons/bi';
 import {Link} from 'react-router-dom'

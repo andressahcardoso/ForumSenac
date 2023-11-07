@@ -12,7 +12,6 @@ export const HomeContainer = styled.div`
 export const Header = styled.div`
     grid-area: Header;
 
-
     background-color: #FFFF;
     box-shadow: 0px 4px 4px #00000046;
     
@@ -35,7 +34,6 @@ export const Header = styled.div`
 export const Nav = styled.div`
     grid-area: Nav;
     
-
     border-right: 5px solid var(--azul-claro);
     background-color: var(--branco);
     z-index: 0;
@@ -51,7 +49,4 @@ export const Main = styled.div`
     justify-content: center;
     padding-top: 10vh;
 
-`
-
-export const TopicNav = styled.div`
 `

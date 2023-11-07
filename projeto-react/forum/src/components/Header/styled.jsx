@@ -32,24 +32,24 @@ export const AreaImageUser = styled.img`
         bottom:9rem;
         left: 9rem;
     }
-`;
+`
 
 
 export const DivLogOut = styled.div`
+    width: 10vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    width: 10vw;
 `
+
 export const BtnLogOut = styled.button`
     height: 4vh;
-    border: 1px solid #d5700b;
-    background-color: white;
-    color: #F79535;
-    border-radius: 20px;
     width: 4vw;
-    height: 4vh;
+    color: #F79535;
+    background-color: white;
+    border: 1px solid #d5700b;
+    border-radius: 20px;
     cursor: pointer;
 `

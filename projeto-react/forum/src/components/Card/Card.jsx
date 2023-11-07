@@ -40,8 +40,7 @@ export const CardForum = styled.button`
     justify-content: left;
     text-align: left;
   }
-
-`;
+`
 
 export const InformacoesCard = styled.div`
   display: flex;
@@ -55,7 +54,7 @@ export const InformacoesCard = styled.div`
     justify-content: center;
     font-size: 20px;
   }
-`;
+`
 
 export const Button = styled.button`
   border: 1px solid var(--laranja);

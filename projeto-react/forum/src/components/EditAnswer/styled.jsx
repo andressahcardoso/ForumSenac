@@ -12,7 +12,6 @@ export const HomeContainer = styled.div`
 export const Header = styled.div`
     grid-area: Header;
 
-
     background-color: #FFFF;
     box-shadow: 0px 4px 4px #00000046;
     
@@ -31,11 +30,8 @@ export const Header = styled.div`
     }
 `
 
-
 export const Nav = styled.div`
     grid-area: Nav;
-    
-
     border-right: 5px solid var(--azul-claro);
     background-color: var(--branco);
     z-index: 0;
@@ -50,7 +46,6 @@ export const Main = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-
     padding-top: 10vh;
 `
 
@@ -63,23 +58,22 @@ export const Form = styled.form`
 `
 
 export const TextArea = styled.textarea`
-    border: 1.5px solid var(--azul-claro);
-    margin-top: 2vh;
     height: 10vh;
+    margin-top: 2vh;
     padding-left: 1vw;
     padding-top: 1vh;
+    border: 1.5px solid var(--azul-claro);
     border-radius: 5px;
 `
 
 export const Button = styled.button`
-    border: 1.5px solid var(--azul-claro);
-    background-color: var(--azul-claro);
-    color: white;
-    border-radius: 10px;
-    margin-top: 10vh;
     height: 6vh;
+    margin-top: 10vh;
+    color: white;
+    background-color: var(--azul-claro);
+    border: 1.5px solid var(--azul-claro);
+    border-radius: 10px;
 `
-
 
 export const Title = styled.h2`
     color: var(--azul-claro);
@@ -88,7 +82,6 @@ export const Title = styled.h2`
 export const TextDiv = styled.div`
     height: 10vh;
     width: 80vw;
-    border-bottom: 1px solid var(--azul-claro);
     margin-top: -5vh;
-
+    border-bottom: 1px solid var(--azul-claro);
 `

@@ -1,21 +1,33 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Main, TitleDiv, PostInfo, Image, Content, Textarea, Button, CommentDiv, Title, EditBtn } from './styled';
+import { Header, HomeContainer, Nav } from '../UserAccount/styled';
+
+// Components
 import HeaderComponent from '../Header/Header';
 import { Sidebar } from '../SideBar/SideBar';
-import { Header, HomeContainer, Nav } from '../UserAccount/styled';
-import axios from 'axios';
+
+// Date
 import { formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { Main, TitleDiv, PostInfo, Image, Content, Textarea, Button, CommentDiv, Title, EditBtn } from './styled';
 
+// Axios
+import axios from 'axios';
+
+// React
+import React, { useCallback, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+
+// Image
 import ImagemComputador from '../../assets/computador-card.png'
 
+
 function Answer() {
+    const navigate = useNavigate();
+    
     const [post, setPost] = useState(null);
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
+
     const { id } = useParams();
-    const navigate = useNavigate();
     const nameUser = localStorage.getItem("name");
 
     // Função para formatar a data em "quanto tempo atrás"

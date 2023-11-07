@@ -5,7 +5,7 @@ export const Main = styled.section`
     height: 82vh;
     overflow: scroll;
     &::-webkit-scrollbar-track {
-    background-color: white;
+        background-color: white;
     }
     &::-webkit-scrollbar {
         width: 6px;
@@ -25,9 +25,9 @@ export const PostInfo = styled.div`
     height: 25vh;
     width: 79vw;
     border: 2px solid var(--azul-claro); 
+    border-radius: 20px;
     display: flex;
     flex-direction: row;
-    border-radius: 20px;
 `
 
 export const Image = styled.img`
@@ -35,11 +35,10 @@ export const Image = styled.img`
 `
 
 export const Content = styled.div`
+    margin-top: -2vh;
+    padding-left: 2vh;
     display: flex;
     flex-direction: column;
-    padding-left: 2vh;
-    margin-top: -2vh;
-
 `
 
 export const Title = styled.h1`
@@ -47,37 +46,37 @@ export const Title = styled.h1`
 `
 
 export const Textarea = styled.textarea`
+    width: 78.5vw;
     border: 2px solid var(--azul-claro);
     border-radius: 10px;
-    width: 78.5vw;
 `
 
 export const Button = styled.button`
-    border: 2px solid var(--azul-claro);
-    background-color: #4f74ee;
-    color: white;
     height: 6vh;
-    font-size: 16px;
     width: 79vw;
+    font-size: 16px;
+    color: white;
+    background-color: #4f74ee;
+    border: 2px solid var(--azul-claro);
     border-radius: 10px;
 `
 
 export const CommentDiv = styled.div`
-    background-color: #ecedf0;
-    border-radius: 20px;
     width: 77vw;
     margin-top: 2vh;
     padding: 2vh;
     padding-bottom: 1vh;
+    background-color: #ecedf0;
+    border-radius: 20px;
 `
 
 export const EditBtn = styled.button`
-    background-color: var(--laranja);
-    border: 0px;
-    color: white;
-    border-radius: 20px;
     width: 10vw;
     margin-top: 2vh;
     margin-left: 67vw;
     padding: 2vh;
+    color: white;
+    background-color: var(--laranja);
+    border: 0px;
+    border-radius: 20px;
 `

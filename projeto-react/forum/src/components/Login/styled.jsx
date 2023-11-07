@@ -16,12 +16,11 @@ export const LoginImg = styled.div`
 
 export const  SignInDiv = styled.div`
     grid-area: SignIn;
+    margin: 5vw;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;   
-    margin: 5vw;
-    
 `
 
 export const Logo = styled.img`
@@ -63,9 +62,9 @@ export const SubText = styled.p`
 `
 
 export const TextDiv = styled.div`
-    display: flex;
     height: 4vh;
     width: 30vw;
+    display: flex;
 `
 
 export const TextSection = styled.section`

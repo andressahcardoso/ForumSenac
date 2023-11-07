@@ -1,15 +1,23 @@
-import { useNavigate, useParams } from "react-router";
-import HeaderComponent from "../Header/Header";
-import { Sidebar } from "../SideBar/SideBar";
 import { Header, HomeContainer, Main, Nav, Form, TextArea, Button, TextDiv, Title } from "./styled";
+
+// React
 import { useCallback, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
+
+// Axios
 import axios from "axios";
 
+// Components
+import HeaderComponent from "../Header/Header";
+import { Sidebar } from "../SideBar/SideBar";
+
 function EditAnswer() {
-  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [commentText, setCommentText] = useState("");
   const userId = localStorage.getItem("userId");
-  const navigate = useNavigate();
+
+  const { id } = useParams();
 
   useEffect(() => {
     async function fetchComment() {
@@ -25,8 +33,7 @@ function EditAnswer() {
 
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
-
-    console.log('id :', id);
+    
     try {
       const response = await axios.put(
         `http://localhost:3001/api/comments/post/update/${id}`,

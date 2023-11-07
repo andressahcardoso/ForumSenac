@@ -34,8 +34,6 @@ export const Header = styled.div`
 
 export const Nav = styled.div`
     grid-area: Nav;
-
-
     border-right: 5px solid var(--azul-claro);
     background-color: var(--branco);
     z-index: 0;
@@ -58,7 +56,7 @@ export const Main = styled.div`
     overflow: scroll;
    
     &::-webkit-scrollbar-track {
-    background-color: white;
+        background-color: white;
     }
     &::-webkit-scrollbar {
         width: 6px;
@@ -67,8 +65,4 @@ export const Main = styled.div`
     &::-webkit-scrollbar-thumb {
         background: white;
     }
-`
-
-export const TopicNav = styled.div`
-
 `

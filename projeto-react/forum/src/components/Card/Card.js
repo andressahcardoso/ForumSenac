@@ -1,15 +1,20 @@
-import React from 'react';
 import { CardForum, Container, InformacoesCard, Button } from "./Card.jsx";
-import { BiMessageAltDetail } from 'react-icons/bi';
+
+// Date
 import { formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+
+// React
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { BiMessageAltDetail } from 'react-icons/bi';
+
+// Images
 import userImage from '../../assets/userImage.PNG'
 
 export const Card = ({ posts, user }) => {
     const navigate = useNavigate()
 
-    console.log('props.user', user)
     return (
         <>
             {posts.map((item) => {
@@ -23,37 +28,36 @@ export const Card = ({ posts, user }) => {
 
                 return (
                     <>
-                        {/* Use o valor de item.post_id para criar links dinâmicos */}
-                            <CardForum>
-                                <h1>{item.post_titulo}</h1>
-                                <p>{item.post_conteudo}</p>
+                        <CardForum>
+                            <h1>{item.post_titulo}</h1>
+                            <p>{item.post_conteudo}</p>
 
-                                <hr />
-                                <InformacoesCard>
-                                    <span>
-                                        <img
-                                            src={userImage}
-                                            alt='Imagem do usuário'
-                                            style={{
-                                                width: '40px',
-                                                borderRadius: '50%',
-                                                marginRight: '10px'
-                                            }}
-                                        />
-                                        {item.autor_nome}
-                                    </span>
-                                    <span>
-                                        {dataCriacaoFormatada} atrás
-                                    </span>
-                                    {user === true  && <Button onClick={() => navigate(`/EditUserPost/${item.post_id}`)}>Editar</Button>}
+                            <hr/>
+                            <InformacoesCard>
+                                <span>
+                                    <img
+                                        src={userImage}
+                                        alt='Imagem do usuário'
+                                        style={{
+                                            width: '40px',
+                                            borderRadius: '50%',
+                                            marginRight: '10px'
+                                        }}
+                                    />
+                                    {item.autor_nome}
+                                </span>
+                                
+                                <span>
+                                    {dataCriacaoFormatada} atrás
+                                </span>
+                                
+                                {user === true  && <Button onClick={() => navigate(`/EditUserPost/${item.post_id}`)}>Editar</Button>}
                                    
-                                    <span onClick={goToAnswer}>
-                                        <BiMessageAltDetail />
-                                        5
-                                    </span>
-                                </InformacoesCard>
-                            </CardForum>
-                        
+                                <span onClick={goToAnswer}>
+                                    <BiMessageAltDetail/>
+                                </span>
+                            </InformacoesCard>
+                        </CardForum> 
                     </>
                 );
             })}

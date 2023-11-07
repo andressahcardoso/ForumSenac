@@ -1,16 +1,14 @@
-import React from 'react';
-// import { useLocation } from 'react-router-dom';
-import {HomeContainer, Header, Nav, Main, TopicNav} from './styled'
+import {HomeContainer, Header, Nav, Main} from './styled'
 
+// React
+import React from 'react';
+
+// Components
 import { Sidebar } from '../SideBar/SideBar';
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
 
 
-
 function MyAnswers() {
-    // const location = useLocation();
-    // const user = location.state;
-
   return (
     <HomeContainer>
       <Header>
@@ -21,9 +19,7 @@ function MyAnswers() {
       </Nav>
       <Main>
         Minhas repostas
-      </Main>
- 
-     
+      </Main>     
     </HomeContainer>
   );
 };
